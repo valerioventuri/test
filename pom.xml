@@ -8,4 +8,41 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>test</name>
 
+  <properties>
+    <jerseyVersion>1.12</jerseyVersion>
+  </properties>
+
+  <dependencies>
+
+    <dependency>
+      <groupId>org.italiangrid</groupId>
+      <artifactId>https-utils</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+      <exclusions>
+        <exclusion>
+          <!-- This actually comes in from voms-api-java, should fix it there -->
+          <groupId>log4j</groupId>
+          <artifactId>log4j</artifactId>
+        </exclusion>
+        <exclusion>
+          <!-- This actually comes in from voms-api-java, should fix it there -->
+          <groupId>org.bouncycastle</groupId>
+          <artifactId>bcprov-ext-jdk16</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>com.sun.jersey</groupId>
+      <artifactId>jersey-server</artifactId>
+      <version>1.13</version>
+    </dependency>
+    <dependency>
+      <groupId>com.sun.jersey</groupId>
+      <artifactId>jersey-servlet</artifactId>
+      <version>1.13</version>
+    </dependency>
+
+  </dependencies>
+
 </project>
