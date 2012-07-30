@@ -6,6 +6,7 @@
   <persistence-unit name="org.italiangrid.wm">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <class>org.italiangrid.wm.model.User</class>
+    <class>org.italiangrid.wm.model.Delegation</class>
     <properties>
       <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
       <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />

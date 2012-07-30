@@ -1,9 +1,11 @@
 package org.italiangrid.wm.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -13,6 +15,8 @@ public class User {
 	private Long id;
 	
 	private String dn;
+	
+	private Delegation delegation;
 	
 	@Id
 	@GeneratedValue(generator="increment")
@@ -34,6 +38,17 @@ public class User {
 
 	public void setDn(String dn) {
 		this.dn = dn;
+	}
+
+	@OneToOne(cascade=CascadeType.ALL)
+	public Delegation getDelegation() {
+		
+		return delegation;
+	}
+
+	public void setDelegation(Delegation delegation) {
+		
+		this.delegation = delegation;
 	}
 	
 }
