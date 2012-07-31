@@ -25,9 +25,9 @@ public class X509CertificateArrayType implements UserType {
 		return null;
 	}
 
-	public Object deepCopy(Object arg0) throws HibernateException {
-		// TODO Auto-generated method stub
-		return null;
+	public Object deepCopy(Object object) throws HibernateException {
+
+		return object;
 	}
 
 	public Serializable disassemble(Object arg0) throws HibernateException {
@@ -57,7 +57,7 @@ public class X509CertificateArrayType implements UserType {
 		
 		String string = (String) TextType.INSTANCE.get(results, names[0], session);
 		
-		if(string.isEmpty())
+		if(string == null || string.isEmpty())
 			return null;
 
 		List<X509Certificate> certificates = new ArrayList<X509Certificate>();
@@ -87,7 +87,7 @@ public class X509CertificateArrayType implements UserType {
 			certificates.add(certificate);
 		}
 		
-		return certificates.toArray();
+		return certificates.toArray(new X509Certificate[certificates.size()]);
 	}
 
 	public void nullSafeSet(PreparedStatement statement, Object object, int index, SessionImplementor session) 
@@ -103,22 +103,22 @@ public class X509CertificateArrayType implements UserType {
 
 			StringWriter stringWriter = new StringWriter();
 			
-			PEMWriter pemWriter = new PEMWriter(new StringWriter());
+			PEMWriter pemWriter = new PEMWriter(stringWriter);
 
 			String string = null;
 			
 			try {
 				
 				for(int i =0; i<certificates.length; ++i) {
-					
-					pemWriter.writeObject(certificates[i]);	
-					
-				}
-
-				string = stringWriter.toString();
-
+				
+					pemWriter.writeObject(certificates[i]); 
+		
+				}				
+				
 				pemWriter.close();
 				
+				string = stringWriter.toString();
+
 			} catch (IOException e) {
 				
 				throw new HibernateException(e);

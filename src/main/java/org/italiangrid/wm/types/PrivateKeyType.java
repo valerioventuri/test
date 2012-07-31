@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.io.StringReader;
 import java.io.StringWriter;
+import java.security.KeyPair;
 import java.security.PrivateKey;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -55,7 +56,7 @@ public class PrivateKeyType implements UserType {
 		
 		String string = (String) TextType.INSTANCE.get(results, names[0], session);
 		
-		if(string == null)
+		if(string == null || string.isEmpty())
 			return null;
 		
         PrivateKey privateKey = null;
@@ -64,7 +65,7 @@ public class PrivateKeyType implements UserType {
         
         try {
 			
-        	privateKey = (PrivateKey) reader.readObject();
+        	privateKey = ((KeyPair) reader.readObject()).getPrivate();
 			
         	reader.close();
 			
@@ -97,10 +98,10 @@ public class PrivateKeyType implements UserType {
 			try {
 				
 				pemWriter.writeObject(privateKey);
-			
-				string = stringWriter.toString();
-				
+
 				pemWriter.close();
+				
+				string = stringWriter.toString();
 				
 			} catch (IOException e) {
 			
@@ -126,7 +127,6 @@ public class PrivateKeyType implements UserType {
 
 	public int[] sqlTypes() {
 		
-		//return new int[] {ImageType.INSTANCE.sqlType()};
 		return new int[] {TextType.INSTANCE.sqlType()};
 	}
 

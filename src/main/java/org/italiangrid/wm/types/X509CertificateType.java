@@ -25,7 +25,7 @@ public class X509CertificateType implements UserType {
 
 	public Object deepCopy(Object object) throws HibernateException {
 		// TODO Auto-generated method stub
-		return null;
+		return object;
 	}
 
 	public Serializable disassemble(Object object) throws HibernateException {
@@ -90,7 +90,7 @@ public class X509CertificateType implements UserType {
 
 			StringWriter stringWriter = new StringWriter();
 			
-			PEMWriter pemWriter = new PEMWriter(new StringWriter());
+			PEMWriter pemWriter = new PEMWriter(stringWriter);
 
 			String string = null;
 			
@@ -98,10 +98,10 @@ public class X509CertificateType implements UserType {
 				
 				pemWriter.writeObject(certificate);
 
-				string = stringWriter.toString();
-
 				pemWriter.close();
 				
+				string = stringWriter.toString();
+
 			} catch (IOException e) {
 				
 				throw new HibernateException(e);
