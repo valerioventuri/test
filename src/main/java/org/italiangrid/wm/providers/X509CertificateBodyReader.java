@@ -33,6 +33,8 @@ public class X509CertificateBodyReader implements MessageBodyReader<X509Certific
 		
 		X509Certificate certificate = (X509Certificate) pemReader.readObject();
 		
+		pemReader.close();
+		
 		return certificate;
 	}
 
