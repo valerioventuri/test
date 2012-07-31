@@ -40,7 +40,7 @@ public class Main {
 		ServletHolder holder = new ServletHolder(servlet);
 		
 		holder.setInitParameter("com.sun.jersey.config.property.packages",
-				"org.italiangrid.wm.resources");
+				"org.italiangrid.wm.resources, org.italiangrid.wm.providers");
 		holder.setInitParameter("com.sun.jersey.api.json.POJOMappingFeature", "true");
 
 		ServletContextHandler servletContextHandler = new ServletContextHandler(ServletContextHandler.SESSIONS);
