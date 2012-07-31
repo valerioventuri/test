@@ -28,7 +28,7 @@ public class PKCS10CertificationRequestBodyWriter implements MessageBodyWriter<P
 
 	public boolean isWriteable(Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType) {
 		
-		return true;
+		return PKCS10CertificationRequest.class == type;
 	}
 
 	public void writeTo(PKCS10CertificationRequest certificateRequest, Class<?> type, Type genericType, Annotation[] annotations, 
