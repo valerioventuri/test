@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# OPTIONS:
+#   None yet
+
+# determine java location
+if [ -x "$JAVA_HOME/bin/java" ]; then
+    JAVA=$JAVA_HOME/bin/java
+else
+    JAVA=`which java`
+fi
+
+SCRIPT="$0"
+
+# determine home
+HOME=`dirname "$SCRIPT"`/..
+
+# make HOME absolute
+HOME=`cd "$HOME"; pwd`
+
+# determine classpath
+CLASSPATH=$CLASSPATH:$HOME/lib/*
+
+exec "$JAVA" $JAVA_OPTS -cp "$CLASSPATH" org.italiangrid.wm.client.Main
