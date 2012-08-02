@@ -21,4 +21,4 @@ HOME=`cd "$HOME"; pwd`
 # determine classpath
 CLASSPATH=$CLASSPATH:$HOME/lib/*:$HOME/config
 
-exec "$JAVA" $JAVA_OPTS -cp "$CLASSPATH" org.italiangrid.wm.client.Main
+exec "$JAVA" $JAVA_OPTS -cp "$CLASSPATH" org.italiangrid.wm.server.Main

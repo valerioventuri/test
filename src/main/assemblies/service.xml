@@ -30,8 +30,7 @@
       <directory>bin</directory>
       <outputDirectory>bin</outputDirectory>
       <includes>
-        <include>elasticsearch</include>
-        <include>elasticsearch.in.sh</include>
+        <include>service</include>
       </includes>
       <fileMode>0755</fileMode>
     </fileSet>
@@ -39,7 +38,7 @@
       <directory>config</directory>
       <outputDirectory>config</outputDirectory>
       <includes>
-        <include>*</include>
+        <include>service.properties</include>
       </includes>
     </fileSet>
   </fileSets>
