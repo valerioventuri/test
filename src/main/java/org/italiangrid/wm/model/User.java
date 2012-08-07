@@ -9,46 +9,59 @@ import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.GenericGenerator;
 
+/**
+ * Models a user of the service.
+ * 
+ * A user is uniquely identified by the distinguished name of the certificate with which she connects to the
+ * service.
+ * 
+ */
 @Entity
 public class User {
 
-	private Long id;
-	
-	private String dn;
-	
-	private Delegation delegation;
-	
-	@Id
-	@GeneratedValue(generator="increment")
-	@GenericGenerator(name="increment", strategy = "increment")
-	public Long getId() {
-	    
-		return id;
-	}
+  private Long id;
 
-	public void setId(Long id) {
-	
-		this.id = id;
-	}
+  /**
+   * The distinguished name of the user certificate.
+   */
+  private String dn;
 
-	@Column(unique=true, nullable=false)
-	public String getDn() {
-		return dn;
-	}
+  /**
+   * The user may have delegated her credential to the service.
+   */
+  private Delegation delegation;
 
-	public void setDn(String dn) {
-		this.dn = dn;
-	}
+  @Id
+  @GeneratedValue(generator = "increment")
+  @GenericGenerator(name = "increment", strategy = "increment")
+  public Long getId() {
 
-	@OneToOne(cascade=CascadeType.ALL)
-	public Delegation getDelegation() {
-		
-		return delegation;
-	}
+    return id;
+  }
 
-	public void setDelegation(Delegation delegation) {
-		
-		this.delegation = delegation;
-	}
-	
+  public void setId(Long id) {
+
+    this.id = id;
+  }
+
+  @Column(unique = true, nullable = false)
+  public String getDn() {
+    return dn;
+  }
+
+  public void setDn(String dn) {
+    this.dn = dn;
+  }
+
+  @OneToOne(cascade = CascadeType.ALL)
+  public Delegation getDelegation() {
+
+    return delegation;
+  }
+
+  public void setDelegation(Delegation delegation) {
+
+    this.delegation = delegation;
+  }
+
 }

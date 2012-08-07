@@ -14,61 +14,82 @@ import org.italiangrid.wm.types.PrivateKeyType;
 import org.italiangrid.wm.types.X509CertificateArrayType;
 import org.italiangrid.wm.types.X509CertificateType;
 
+/**
+ * Models a user's delegated credential.
+ * 
+ * Delegation of credentials is done by making available to the service a proxy certificate (see
+ * http://www.ietf.org/rfc/rfc3820.txt) derived from an end entity certificate.
+ * 
+ * The delegation is made of the proxy certificate, the correspondent private key, and the chain from which
+ * the proxy certificate derived.
+ * 
+ * A delegation is associated to a user. The association is set in the User class.
+ * 
+ */
 @Entity
-@TypeDefs({@TypeDef(defaultForType = X509Certificate[].class, typeClass=X509CertificateArrayType.class),
-		   @TypeDef(defaultForType = X509Certificate.class, typeClass=X509CertificateType.class),
-		   @TypeDef(defaultForType = PrivateKey.class, typeClass=PrivateKeyType.class)})
+@TypeDefs({@TypeDef(defaultForType = X509Certificate[].class, typeClass = X509CertificateArrayType.class),
+           @TypeDef(defaultForType = X509Certificate.class, typeClass = X509CertificateType.class),
+           @TypeDef(defaultForType = PrivateKey.class, typeClass = PrivateKeyType.class)})
 public class Delegation {
 
-	private Long id;
-		
-	private X509Certificate[] chain;
-	
-	private X509Certificate certificate;
-	
-	private PrivateKey privateKey;
-	
-	@Id
-	@GeneratedValue(generator="increment")
-	@GenericGenerator(name="increment", strategy = "increment")
-	public Long getId() {
-	    
-		return id;
-	}
+  private Long id;
 
-	public void setId(Long id) {
-	
-		this.id = id;
-	}
-	
-	public X509Certificate[] getChain() {
+  /**
+   * The chain from which the proxy certificate derived.
+   */
+  private X509Certificate[] chain;
 
-		return chain;
-	}
+  /**
+   * The proxy certificate.
+   */
+  private X509Certificate certificate;
 
-	public void setChain(X509Certificate[] chain) {
-		
-		this.chain = chain;
-	}
+  /**
+   * The private key.
+   */
+  private PrivateKey privateKey;
 
-	public X509Certificate getCertificate() {
-		
-		return certificate;
-	}
+  @Id
+  @GeneratedValue(generator = "increment")
+  @GenericGenerator(name = "increment", strategy = "increment")
+  public Long getId() {
 
-	public void setCertificate(X509Certificate certificate) {
-		
-		this.certificate = certificate;
-	}
+    return id;
+  }
 
-	public PrivateKey getPrivateKey() {
-		
-		return privateKey;
-	}
+  public void setId(Long id) {
 
-	public void setPrivateKey(PrivateKey privateKey) {
-		
-		this.privateKey = privateKey;
-	}
+    this.id = id;
+  }
+
+  public X509Certificate[] getChain() {
+
+    return chain;
+  }
+
+  public void setChain(X509Certificate[] chain) {
+
+    this.chain = chain;
+  }
+
+  public X509Certificate getCertificate() {
+
+    return certificate;
+  }
+
+  public void setCertificate(X509Certificate certificate) {
+
+    this.certificate = certificate;
+  }
+
+  public PrivateKey getPrivateKey() {
+
+    return privateKey;
+  }
+
+  public void setPrivateKey(PrivateKey privateKey) {
+
+    this.privateKey = privateKey;
+  }
 
 }
