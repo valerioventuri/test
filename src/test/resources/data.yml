@@ -1,0 +1,7 @@
+- !!org.italiangrid.wm.model.User
+  &valerio
+  dn: CN=Valerio Venturi
+
+- !!org.italiangrid.wm.model.User
+  &gastone
+  dn: CN=Gastone Paperone
