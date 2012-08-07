@@ -4,7 +4,6 @@ import java.io.InputStream;
 import java.security.Security;
 import java.util.List;
 
-import org.italiangrid.wm.model.Job;
 import org.italiangrid.wm.model.User;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -37,8 +36,6 @@ public class UserRepositoryTest {
 		List<Object> objects = (List<Object>) yaml.load(inputStream);
 		
 		for(Object object : objects) {
-			
-			Assert.assertTrue(object instanceof User || object instanceof Job);
 			
 			if(object instanceof User) {
 				
