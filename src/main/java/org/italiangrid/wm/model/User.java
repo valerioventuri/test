@@ -11,7 +11,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 /**
  * Models a user of the service.
- * 
+ * <p>
  * A user is uniquely identified by the distinguished name of the certificate with which she connects to the
  * service.
  * 

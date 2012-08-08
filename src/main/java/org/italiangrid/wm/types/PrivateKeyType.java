@@ -17,6 +17,10 @@ import org.hibernate.engine.spi.SessionImplementor;
 import org.hibernate.type.TextType;
 import org.hibernate.usertype.UserType;
 
+/**
+ * Hibernate custom type for persisting properties of type PrivateKey.
+ * 
+ */
 public class PrivateKeyType implements UserType {
 
 	public Object assemble(Serializable cached, Object arg1) throws HibernateException {

@@ -48,10 +48,10 @@ public class DelegationResource {
 	/**
 	 * 
 	 * Initialize the delegation process, sending a certificate signing request back to the client.
-	 * 
-     * The method throws a few checked exceptions that in turn are thrown by the certificate signing request generation process. 
-     * Not sure this is good design, but since I don't really know what to if I caught them, it seemed to dry to code to rethrow them,
-     * and map them to 500 Response using excpetion mapping mechanism.
+	 * <p>
+   * The method throws a few checked exceptions that in turn are thrown by the certificate signing request generation process. 
+   * Not sure this is good design, but since I don't really know what to if I caught them, it seemed to dry to code to rethrow them,
+   * and map them to 500 Response using excpetion mapping mechanism.
 	 * 
 	 * @return a 201 Created response containing the certificate signing request 
 	 * @throws InvalidKeyException

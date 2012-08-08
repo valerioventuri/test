@@ -16,14 +16,12 @@ import org.italiangrid.wm.types.X509CertificateType;
 
 /**
  * Models a user's delegated credential.
- * 
+ * <p>
  * Delegation of credentials is done by making available to the service a proxy certificate (see
  * http://www.ietf.org/rfc/rfc3820.txt) derived from an end entity certificate.
- * 
+ * <p>
  * The delegation is made of the proxy certificate, the correspondent private key, and the chain from which
  * the proxy certificate derived.
- * 
- * A delegation is associated to a user. The association is set in the User class.
  * 
  */
 @Entity
@@ -36,16 +34,19 @@ public class Delegation {
 
   /**
    * The chain from which the proxy certificate derived.
+   * 
    */
   private X509Certificate[] chain;
 
   /**
    * The proxy certificate.
+   * 
    */
   private X509Certificate certificate;
 
   /**
    * The private key.
+   * 
    */
   private PrivateKey privateKey;
 
