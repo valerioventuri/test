@@ -13,7 +13,7 @@
     <springDataJPAVersion>1.0.3.RELEASE</springDataJPAVersion>
     <hibernateVersion>4.1.5.Final</hibernateVersion>
     <mysqlConnectorJavaVersion>5.1.21</mysqlConnectorJavaVersion>
-    <junitVersion>4.10</junitVersion>
+    <junitVersion>4.13.1</junitVersion>
   </properties>
 
   <build>
