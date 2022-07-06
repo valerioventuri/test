@@ -10,7 +10,7 @@
 
   <properties>
     <jerseyVersion>1.13</jerseyVersion>
-    <springDataJPAVersion>1.0.3.RELEASE</springDataJPAVersion>
+    <springDataJPAVersion>1.11.23.RELEASE</springDataJPAVersion>
     <hibernateVersion>4.1.5.Final</hibernateVersion>
     <mysqlConnectorJavaVersion>5.1.21</mysqlConnectorJavaVersion>
     <junitVersion>4.10</junitVersion>
